@@ -1,5 +1,5 @@
-import { Universe, Cell } from "wasm-game-of-life";
-import { memory } from "wasm-game-of-life/wasm_game_of_life_bg";
+import { Universe, Cell } from "../pkg/wasm-game-of-life";
+import { memory } from "../pkg/wasm-game-of-life/wasm_game_of_life_bg";
 
 let animationId = null;
 const CELL_SIZE = 5
