@@ -60,7 +60,7 @@ const getIndex = (row, column) => {
 
 const drawCells = () => {
     const cellsPtr = universe.cells();
-    const cells = new Uint8Array(initOutput.memory.buffer, cellsPtr, width * height);
+    const cells = new Uint8Array(WebAssembly.Memory().buffer(), cellsPtr, width * height);
     ctx.beginPath()
     for (let row = 0; row < height; row++) {
         for (let col = 0; col < width; col++) {
