@@ -248,6 +248,12 @@ async function init(input) {
     imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
         takeObject(arg0);
     };
+    imports.wbg.__wbg_time_0e728e77f3539d2e = function(arg0, arg1) {
+        console.time(getStringFromWasm0(arg0, arg1));
+    };
+    imports.wbg.__wbg_timeEnd_eb5e067af6d5b035 = function(arg0, arg1) {
+        console.timeEnd(getStringFromWasm0(arg0, arg1));
+    };
     imports.wbg.__wbindgen_throw = function(arg0, arg1) {
         throw new Error(getStringFromWasm0(arg0, arg1));
     };
