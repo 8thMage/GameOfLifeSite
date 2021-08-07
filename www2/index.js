@@ -1,7 +1,7 @@
-import init, { Universe, Cell} from "../pkg/wasm_game_of_life.js";
-await init("../pkg/wasm_game_of_life_bg.wasm");
+import init from "../pkg/wasm_game_of_life.js";
+const initOutput = init("../pkg/wasm_game_of_life_bg.wasm");
 // import { Universe, Cell } from "../pkg/wasm_game_of_life.js";
-import { memory } from "../pkg/wasm_game_of_life_bg.js";
+// import { memory } from "../pkg/wasm_game_of_life_bg.js";
 
 let animationId = null;
 const CELL_SIZE = 5
@@ -10,7 +10,7 @@ const DEAD_COLOR = "#FFFFFF"
 const Alive_COLOR = "#000000"
 
 const canvas = document.getElementById("game-of-life-canvas");
-const universe = Universe.new();
+const universe = initOutput.Universe.new();
 const width = universe.width();
 const height = universe.height();
 canvas.height = (CELL_SIZE + 1) * height + 1
@@ -60,7 +60,7 @@ const getIndex = (row, column) => {
 
 const drawCells = () => {
     const cellsPtr = universe.cells();
-    const cells = new Uint8Array(memory.buffer, cellsPtr, width * height);
+    const cells = new Uint8Array(initOutput.memory.buffer, cellsPtr, width * height);
     ctx.beginPath()
     for (let row = 0; row < height; row++) {
         for (let col = 0; col < width; col++) {
