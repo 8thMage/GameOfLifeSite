@@ -1,4 +1,4 @@
-import { init } from "../pkg/wasm_game_of_life.js";
+import init  from "../pkg/wasm_game_of_life.js";
 init();
 // import { Universe, Cell } from "../pkg/wasm_game_of_life.js";
 // import { memory } from "../pkg/wasm_game_of_life_bg.js";
