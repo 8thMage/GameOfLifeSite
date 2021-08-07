@@ -10,9 +10,9 @@ const DEAD_COLOR = "#FFFFFF"
 const Alive_COLOR = "#000000"
 
 const canvas = document.getElementById("game-of-life-canvas");
-const universe = initOutput.Universe.new();
-const width = universe.width();
-const height = universe.height();
+const universe = initOutput.universe_new();
+const width = initOutput.universe_width(universe);
+const height = initOutput.universe_height(universe);
 canvas.height = (CELL_SIZE + 1) * height + 1
 canvas.width = (CELL_SIZE + 1) * width + 1
 const ctx = canvas.getContext('2d')
