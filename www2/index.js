@@ -1,5 +1,5 @@
 import init  from "../pkg/wasm_game_of_life.js";
-await init("../pkg/wasm_game_of_life");
+await init("../pkg/wasm_game_of_life_bg.wasm");
 // import { Universe, Cell } from "../pkg/wasm_game_of_life.js";
 // import { memory } from "../pkg/wasm_game_of_life_bg.js";
 
