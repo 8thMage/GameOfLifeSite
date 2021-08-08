@@ -1,5 +1,5 @@
 import init, { Universe, Cell } from "../pkg/wasm_game_of_life.js";
-const initOutput = init("../pkg/wasm_game_of_life_bg.wasm");
+const initOutput = await init("../pkg/wasm_game_of_life_bg.wasm");
 // import { Universe, Cell } from "../pkg/wasm_game_of_life.js";
 // import { memory } from "../pkg/wasm_game_of_life_bg.js";
 
@@ -155,9 +155,7 @@ const isPaused = () => {
 
 const renderLoop = () => {
     fps.render();
-    for (let i = 0; i < 9; i++) {
-        universe.tick();
-    }
+    universe.tick();
     drawGrid();
     drawCells();
     animationId = requestAnimationFrame(renderLoop);
