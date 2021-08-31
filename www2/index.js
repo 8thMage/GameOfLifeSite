@@ -1,7 +1,7 @@
-import init, { Universe, Cell } from "../pkg/wasm_game_of_life.js";
+import init, { Universe, Cell, start } from "../pkg/wasm_game_of_life.js";
 const initOutput = await init("../pkg/wasm_game_of_life_bg.wasm");
-// import { Universe, Cell } from "../pkg/wasm_game_of_life.js";
-// import { memory } from "../pkg/wasm_game_of_life_bg.js";
+// import { Universe, Cell, start } from "../pkg/wasm_game_of_life.js";
+// import { memory } from "../pkg/wasm_game_of_life_bg.wasm";
 
 const fps = new class {
     constructor() {
@@ -9,6 +9,7 @@ const fps = new class {
         this.frames = [];
         this.lastFrameTimeStamp = performance.now();
     }
+
 
     render() {
         // Convert the delta time since the last frame render into a measure
@@ -58,9 +59,11 @@ const width = universe.width();
 const height = universe.height();
 canvas.height = (CELL_SIZE + 1) * height + 1
 canvas.width = (CELL_SIZE + 1) * width + 1
-const ctx = canvas.getContext('2d')
+// const ctx = canvas.getContext('2d')
 
 const playButton = document.getElementById("play-pause");
+
+start();
 
 const play = () => {
     playButton.textContent = "⏸";
@@ -103,7 +106,7 @@ const getIndex = (row, column) => {
 
 const drawCells = () => {
     const cellsPtr = universe.cells();
-    const cells = new Uint8Array(initOutput.memory.buffer, cellsPtr, width * height);
+    const cells = new Uint8Array(memory.buffer, cellsPtr, width * height);
     ctx.beginPath()
     ctx.fillStyle = DEAD_COLOR
     for (let row = 0; row < height; row++) {
@@ -145,8 +148,8 @@ canvas.addEventListener("click", event => {
     const row = Math.min(Math.floor(canvasTop / (CELL_SIZE + 1)), height - 1);
     const col = Math.min(Math.floor(canvasLeft / (CELL_SIZE + 1)), width - 1);
     universe.toggle_cell(col, row);
-    drawGrid();
-    drawCells();
+    // drawGrid();
+    // drawCells();
 })
 
 const isPaused = () => {
@@ -156,8 +159,8 @@ const isPaused = () => {
 const renderLoop = () => {
     fps.render();
     universe.tick();
-    drawGrid();
-    drawCells();
+    // drawGrid();
+    // drawCells();
     animationId = requestAnimationFrame(renderLoop);
 };
 play();

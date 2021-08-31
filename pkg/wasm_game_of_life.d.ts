@@ -2,6 +2,9 @@
 /* eslint-disable */
 /**
 */
+export function start(): void;
+/**
+*/
 export enum Cell {
   Dead,
   Alive,
@@ -44,6 +47,7 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
+  readonly start: () => void;
   readonly __wbg_universe_free: (a: number) => void;
   readonly universe_new: () => number;
   readonly universe_render: (a: number, b: number) => void;
@@ -56,6 +60,7 @@ export interface InitOutput {
   readonly __wbindgen_free: (a: number, b: number) => void;
   readonly __wbindgen_malloc: (a: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number) => number;
+  readonly __wbindgen_exn_store: (a: number) => void;
 }
 
 /**
