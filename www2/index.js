@@ -57,8 +57,8 @@ const canvas = document.getElementById("game-of-life-canvas");
 const universe = Universe.new();
 const width = universe.width();
 const height = universe.height();
-canvas.height = (CELL_SIZE + 1) * height + 1
-canvas.width = (CELL_SIZE + 1) * width + 1
+canvas.height = 800
+canvas.width = 800
 // const ctx = canvas.getContext('2d')
 
 const playButton = document.getElementById("play-pause");
