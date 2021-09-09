@@ -1,13 +1,19 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
+* @returns {GameOfLifeGlContext}
 */
-export function start(): void;
+export function start(): GameOfLifeGlContext;
 /**
 */
 export enum Cell {
   Dead,
   Alive,
+}
+/**
+*/
+export class GameOfLifeGlContext {
+  free(): void;
 }
 /**
 */
@@ -18,9 +24,10 @@ export class Universe {
 */
   static new(): Universe;
 /**
+* @param {GameOfLifeGlContext} context
 * @returns {string}
 */
-  render(): string;
+  render(context: GameOfLifeGlContext): string;
 /**
 * @returns {number}
 */
@@ -47,10 +54,11 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly start: () => void;
+  readonly __wbg_gameoflifeglcontext_free: (a: number) => void;
+  readonly start: () => number;
   readonly __wbg_universe_free: (a: number) => void;
   readonly universe_new: () => number;
-  readonly universe_render: (a: number, b: number) => void;
+  readonly universe_render: (a: number, b: number, c: number) => void;
   readonly universe_width: (a: number) => number;
   readonly universe_height: (a: number) => number;
   readonly universe_cells: (a: number) => number;

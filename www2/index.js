@@ -63,7 +63,7 @@ canvas.width = (CELL_SIZE + 1) * width + 1
 
 const playButton = document.getElementById("play-pause");
 
-start();
+const context = start();
 
 const play = () => {
     playButton.textContent = "⏸";
@@ -159,6 +159,7 @@ const isPaused = () => {
 const renderLoop = () => {
     fps.render();
     universe.tick();
+    universe.render(context);
     // drawGrid();
     // drawCells();
     animationId = requestAnimationFrame(renderLoop);
